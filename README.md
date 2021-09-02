@@ -1,8 +1,10 @@
 <h1> API de Games</h1>
 
-<h3> API para visualizar, adicionar, alterar e apagar dados de games.
-Esta API esta sendo consumida aqui: https://github.com/faalbuquerque/games-api-cli</h3>
+<h4> API para visualizar, adicionar, alterar e apagar dados de games.
+</h4>
 
+<h4>Esta API esta sendo consumida aqui: https://github.com/faalbuquerque/games-api-cli
+</h4>
 
 ### Endpoint para visualizar todos os games:
 
