@@ -1,24 +1,165 @@
-# README
+<h1> API de Games</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h3> API para visualizar, adicionar, alterar e apagar dados de games.
+Esta API esta sendo consumida aqui: https://github.com/faalbuquerque/games-api-cli</h3>
 
-Things you may want to cover:
 
-* Ruby version
+### Endpoint para visualizar todos os games:
 
-* System dependencies
+```
+Rota: GET https://fabi-games-api.herokuapp.com/api/v1/games/
 
-* Configuration
+Output:
 
-* Database creation
+{
+  "games": [
+    {
+      "id": 3,
+      "name": "Portal",
+      "description": "Um jogo dificil",
+      "genre": "Puzzle",
+      "grade": 10
+    },
+    {
+      "id": 4,
+      "name": "Demons Souls",
+      "description": "Jogo Dificil demais",
+      "genre": "RPG",
+      "grade": 10
+    },
+    {
+      "id": 19,
+      "name": "Skyrim",
+      "description": "Um jogo medieval",
+      "genre": "RPG",
+      "grade": 10
+    }
+  ]
+}
+```
 
-* Database initialization
+### Endpoint para visualizar um game:
 
-* How to run the test suite
+```
+Rota: GET https://fabi-games-api.herokuapp.com/api/v1/games/#{id}
 
-* Services (job queues, cache servers, search engines, etc.)
+Output:
 
-* Deployment instructions
+{
+  "game": {
+    "id": 19,
+    "name": "Skyrim",
+    "description": "Um jogo medieval",
+    "genre": "RPG",
+    "grade": 10
+  }
+}
 
-* ...
+Output em caso de falha(Dados inválidos):
+
+{
+  "message": "Dado inexiste"
+}
+```
+
+### Endpoint para adicionar games:
+
+```
+Rota:  POST https://fabi-games-api.herokuapp.com/api/v1/games/
+
+Input:
+
+{
+  "game": {
+    "name":"Skyrim",
+    "description":"Um jogo medieval",
+    "genre":"RPG",
+    "grade":10
+  }
+}
+
+Output em caso de sucesso:
+
+{
+  "game": {
+    "id": 21,
+    "name": "Skyrim",
+    "description": "Um jogo medieval",
+    "genre": "RPG",
+    "grade": 10
+  }
+}
+
+Output em caso de falha(campos em branco):
+
+{
+    "message": [
+        "Description can't be blank"
+    ]
+}
+
+Output em caso de falha(dados inválidos):
+
+{
+  "message": "Dados inválidos"
+}
+
+```
+
+### Endpoint para alterar game:
+
+```
+Rota:  PUT https://fabi-games-api.herokuapp.com/api/v1/games/#{id}
+
+Input:
+
+{
+  "game": {
+    "name": "Oblivion",
+    "description": "Um jogo online",
+    "genre": "RPG",
+    "grade": 8
+  }
+}
+
+Output em caso de sucesso:
+
+{
+  "game": {
+    "name": "Oblivion",
+    "description": "Um jogo online",
+    "genre": "RPG",
+    "grade": 8,
+    "id": 21
+  }
+}
+
+Output em caso de falha(campos em branco):
+
+{
+    "message": [
+        "Description can't be blank"
+    ]
+}
+
+Em caso de falha(dados inválidos): Status 400 Bad Request
+
+```
+
+### Endpoint para apagar game:
+
+```
+Rota:  DELETE https://fabi-games-api.herokuapp.com/api/v1/games/#{id}
+
+Output em caso de sucesso:
+
+{
+  "message": "Game apagado"
+}
+
+Output em caso de falha(Dados inválidos):
+
+{
+  "message": "Dado inexiste"
+}
+```
